@@ -1,0 +1,23 @@
+service: supreme-potato
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+  environment: ${file(env.${opt:stage, 'dev'}.json)}
+
+package:
+  patterns:
+    - '!./**'
+    - ./bin/**
+
+functions:
+  - telegram:
+      handler: bin/telegram
+      events:
+        - httpApi:
+            path: /telegram
+            method: post

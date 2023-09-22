@@ -19,3 +19,14 @@
 
 # Go workspace file
 go.work
+
+# golang output binary directory
+bin
+
+# Serverless directories
+.serverless
+
+# Environment
+.env
+env.*.json
+!env.ex.json
