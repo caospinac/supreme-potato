@@ -1,5 +1,7 @@
 package telegram
 
+import "time"
+
 type Update struct {
 	UpdateID int64   `json:"update_id"`
 	Message  Message `json:"message"`
@@ -9,7 +11,7 @@ type Message struct {
 	MessageID      int64           `json:"message_id"`
 	From           MessageFrom     `json:"from"`
 	Chat           Chat            `json:"chat"`
-	Date           int64           `json:"date"`
+	Date           time.Time       `json:"date"`
 	ReplyToMessage *ReplyToMessage `json:"reply_to_message"`
 	Text           string          `json:"text"`
 	Entities       []Entity        `json:"entities"`
@@ -42,7 +44,7 @@ type ReplyToMessage struct {
 	MessageID int64              `json:"message_id"`
 	From      ReplyToMessageFrom `json:"from"`
 	Chat      Chat               `json:"chat"`
-	Date      int64              `json:"date"`
+	Date      time.Time          `json:"date"`
 	Text      string             `json:"text"`
 }
 
